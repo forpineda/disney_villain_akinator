@@ -1,0 +1,118 @@
+﻿Name,Movie,IsMainVillain,IsSidekick,IsGroup,FromPrincessMovie,IsHuman,IsAnimal,IsCreatureOrSpirit,IsFemale,IsMale,HasMagicPowers,CastsCurseOrSpell,TransformsToAnimal,HasHorns,HasGreenSkin,WieldsWeapon,IsComicRelief,RedeemedAtEnd,DiesOrDestroyedAtEnd,AppearsInSequel,HasTail,HasMinions,HasVillainSong,IsShapeShifter,TransformsToHuman
+Evil Queen,Snow White and the Seven Dwarfs,1,0,0,1,1,0,0,1,0,1,1,1,0,0,0,0,0,1,0,0,0,0,1,1
+Huntsman,Snow White and the Seven Dwarfs,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Stromboli,Pinocchio,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Honest John,Pinocchio,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0
+Gideon,Pinocchio,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0
+Coachman,Pinocchio,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Monstro,Pinocchio,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Chernabog,Fantasia,1,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Ringmaster,Dumbo,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Man (Hunters),Bambi,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Willie the Giant,Fun and Fancy Free,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Winky,The Adventures of Ichabod and Mr. Toad,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Headless Horseman,The Adventures of Ichabod and Mr. Toad,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Lady Tremaine,Cinderella,1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Anastasia,Cinderella,0,1,0,1,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Drizella,Cinderella,0,1,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Lucifer,Cinderella,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Queen of Hearts,Alice in Wonderland,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+King of Hearts,Alice in Wonderland,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Captain Hook,Peter Pan,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+Mr. Smee,Peter Pan,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Aunt Sarah,Lady and the Tramp,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Si & Am,Lady and the Tramp,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Maleficent,Sleeping Beauty,1,0,0,1,1,0,0,1,0,1,1,1,1,1,0,0,0,1,0,0,0,0,1,0
+Diablo,Sleeping Beauty,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Cruella de Vil,101 Dalmatians,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Jasper,101 Dalmatians,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Horace,101 Dalmatians,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Madam Mim,The Sword in the Stone,1,0,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,1,0
+Shere Khan,The Jungle Book,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Kaa,The Jungle Book,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+King Louie,The Jungle Book,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0
+Edgar Balthazar,The Aristocats,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Prince John,Robin Hood,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Sheriff of Nottingham,Robin Hood,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Sir Hiss,Robin Hood,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Madame Medusa,The Rescuers,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Mr. Snoops,The Rescuers,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Brutus & Nero,The Rescuers,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Amos Slade,The Fox and the Hound,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Horned King,The Black Cauldron,1,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,0,1,0,0,0,0,0,0
+Creeper,The Black Cauldron,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Professor Ratigan,The Great Mouse Detective,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Fidget,The Great Mouse Detective,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Felicia,The Great Mouse Detective,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Sykes,Oliver & Company,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Roscoe & DeSoto,Oliver & Company,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Ursula,The Little Mermaid,1,0,0,1,0,0,1,1,0,1,1,1,0,0,0,0,0,1,0,0,0,1,1,1
+Flotsam,The Little Mermaid,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Jetsam,The Little Mermaid,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Percival C. McLeach,The Rescuers Down Under,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Joanna,The Rescuers Down Under,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Gaston,Beauty and the Beast,1,0,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0
+LeFou,Beauty and the Beast,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Jafar,Aladdin,1,0,0,1,1,0,0,0,1,1,1,1,0,0,1,0,0,0,1,0,0,1,1,0
+Iago,Aladdin,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0
+Scar,The Lion King,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0
+Shenzi,The Lion King,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Banzai,The Lion King,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Ed,The Lion King,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0
+Governor Ratcliffe,Pocahontas,1,0,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Wiggins,Pocahontas,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Judge Claude Frollo,The Hunchback of Notre Dame,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+Hades,Hercules,1,0,0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+Pain,Hercules,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Panic,Hercules,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Titans,Hercules,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Shan Yu,Mulan,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+Clayton,Tarzan,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+Sabor,Tarzan,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Yzma,The Emperor's New Groove,1,0,0,0,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,1,0
+Kronk,The Emperor's New Groove,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0
+Commander Rourke,Atlantis: The Lost Empire,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+Helga Sinclair,Atlantis: The Lost Empire,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Dr. Jumba Jookiba,Lilo & Stitch,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Captain Gantu,Lilo & Stitch,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Scroop,Treasure Planet,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Alameda Slim,Home on the Range,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Willie Brothers,Home on the Range,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Bowler Hat Guy,Meet the Robinsons,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Dor15 (Doris),Meet the Robinsons,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+Dr. Calico,Bolt,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Dr. Facilier,The Princess and the Frog,1,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1,0,0
+Lawrence,The Princess and the Frog,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Mother Gothel,Tangled,1,0,0,1,1,0,0,1,0,1,1,0,0,0,0,0,0,1,0,0,0,1,0,0
+Stabbington Brother 1,Tangled,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Stabbington Brother 2,Tangled,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+King Candy / Turbo,Wreck-It Ralph,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Prince Hans,Frozen,1,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Duke of Weselton,Frozen,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Yokai (Callaghan),Big Hero 6,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Dawn Bellwether,Zootopia,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Te Kā,Moana,1,0,0,1,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0
+Tamatoa,Moana,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0
+Kakamora,Moana,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+King Runeard,Frozen II,1,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Druun,Raya and the Last Dragon,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+King Magnifico,Wish,1,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0
+Morgana,The Little Mermaid II: Return to the Sea,1,0,0,1,0,0,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0
+Cloak,The Little Mermaid II: Return to the Sea,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Dagger,The Little Mermaid II: Return to the Sea,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Marina Del Rey,The Little Mermaid: Ariel's Beginning,1,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Benjamin,The Little Mermaid: Ariel's Beginning,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Forte,Beauty and the Beast: The Enchanted Christmas,1,0,0,1,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Fife,Beauty and the Beast: The Enchanted Christmas,0,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Abis Mal,The Return of Jafar,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Sa'luk,Aladdin and the King of Thieves,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Zira,The Lion King II: Simba's Pride,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Nuka,The Lion King II: Simba's Pride,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Vitani,The Lion King II: Simba's Pride,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Sarousch,The Hunchback of Notre Dame II,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Mama Gunda,Tarzan II,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Uto,Tarzan II,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Kago,Tarzan II,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Ronno,Bambi II,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Dr. Hamsterviel,Stitch! The Movie / Leroy & Stitch,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Leroy,Leroy & Stitch,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
