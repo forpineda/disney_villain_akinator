@@ -1,6 +1,6 @@
 # Disney Villain Akinator – Deep Q-Learning Agent
 Final Project for CS 4320 – Decision Making / Reinforcement Learning
-Created by Fatima Orpineda Prieto, & Citlali Mondragon
+Created by Fatima Orpineda Prieto, Citlali Mondragon and Jairo Ruvalcaba
 
 ### Project Overview
 This project implements a Reinforcement Learning version of the popular game Akinator, restricted to Disney villains.
