@@ -32,6 +32,19 @@ cd disney_villain_akinator
 Then run:
 pip install -r requirements.txt
 
+### Installation Instructions
+The project would need 2 terminals to run at the same time, after doing the installation instructions.
+
+For the first terminal, which would be the one running the backend, would run the command line
+#### uvicorn server.app:app --reload
+
+For the second terminal, needs to go into the UI folder (run command cd ui). The ui folder, requires npm being stall, so if the local computer doesn't have it, the command line to install is 
+#### npm install
+After npm being install the command line to run the frontend would be 
+#### npm run dev
+which would open the app on the link http://localhost:5173
+
+
 ### How to Run the Project
 1. Train the agent
 
