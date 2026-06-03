@@ -15,7 +15,7 @@ from env.villain_env import VillainAkinatorEnv
 
 def train_dqn(
     csv_path="data/disney_villains_akinator_Dataset.csv",
-    max_questions=10,
+    max_questions=15,
     episodes=3000,
     start_eps=1.0,
     end_eps=0.05,
@@ -39,7 +39,7 @@ def train_dqn(
         csv_path=csv_path,
         max_questions=max_questions,
         use_main_villains_only=True,
-        min_questions_before_guess=3,
+        min_questions_before_guess=6,
         use_reward_shaping=use_reward_shaping,
     )
 
@@ -48,7 +48,7 @@ def train_dqn(
     print("  Num questions:", env.num_questions)
     print("  Num actions:", env.num_actions)
 
-    state_dim = 2 * env.num_questions
+    state_dim = env.state_dim
     num_actions = env.num_actions
 
     agent = DQNAgent(state_dim, num_actions, lr=1e-3)
@@ -66,10 +66,12 @@ def train_dqn(
         state = env.reset()
         done = False
         total_reward = 0.0
+        printed_debug = False
 
         while not done:
             eps = epsilon(ep)
-            action = agent.select_action(state, eps)
+            mask = env.valid_action_mask()
+            action = agent.select_action(state, eps, action_mask=mask)
 
             next_state, reward, done, _ = env.step(action)
 
@@ -82,6 +84,10 @@ def train_dqn(
             if agent.train_steps % target_update_freq == 0:
                 agent.update_target_network()
 
+            if ep == 1 and not printed_debug:
+                print("valid actions:", env.valid_action_mask().sum(), "/", env.num_actions)
+                printed_debug = True
+
         returns.append(total_reward)
 
         if ep % 100 == 0:
@@ -91,7 +97,7 @@ def train_dqn(
                 f"avg return (last 100) = {avg:.2f}"
             )
 
-    model_path = f"villain_dqn_{tag}.pth"
+    model_path = f"villain_dqn_{tag}_62v_15q_state32.pth"
     torch.save(agent.q_net.state_dict(), model_path)
     print(f"Saved model to {model_path}")
 

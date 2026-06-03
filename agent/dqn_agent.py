@@ -41,15 +41,33 @@ class DQNAgent:
 
         self.train_steps = 0
 
-    def select_action(self, state: np.ndarray, epsilon: float) -> int:
-        if np.random.rand() < epsilon:
+    def select_action(self, state: np.ndarray, epsilon: float, action_mask: np.ndarray | None = None) -> int:
+        """
+        Epsilon-greedy with optional action masking.
+        action_mask: boolean array shape (num_actions,) where True means allowed.
+        """
+        if action_mask is None:
+            action_mask = np.ones(self.num_actions, dtype=bool)
+
+        valid_actions = np.where(action_mask)[0]
+        if len(valid_actions) == 0:
+            # fallback: if somehow nothing valid, choose random action
             return np.random.randint(self.num_actions)
 
+        # exploration
+        if np.random.rand() < epsilon:
+            return int(np.random.choice(valid_actions))
+
+        # exploitation
         state_tensor = torch.tensor(state, dtype=torch.float32).unsqueeze(0).to(self.device)
         with torch.no_grad():
-            q_values = self.q_net(state_tensor)
+            q_values = self.q_net(state_tensor).squeeze(0)  # shape: (num_actions,)
 
-        return int(torch.argmax(q_values, dim=1).item())
+        # mask invalid actions by setting them to -inf
+        q_values_np = q_values.detach().cpu().numpy()
+        q_values_np[~action_mask] = -1e9
+
+        return int(np.argmax(q_values_np))
 
     def store_transition(self, state, action, reward, next_state, done):
         self.replay_buffer.add(state, action, reward, next_state, done)

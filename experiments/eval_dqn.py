@@ -27,7 +27,7 @@ def evaluate_dqn(
         csv_path=csv_path,
         max_questions=max_questions,
         use_main_villains_only=use_main_villains_only,
-        min_questions_before_guess=3
+        min_questions_before_guess=5
     )
 
     state_dim = env.state_dim

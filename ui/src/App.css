@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
+:root {
+  --gold: #d7a93f;
+  --deep-gold: #7a4c18;
+  --purple: #2b123f;
+  --dark: #090313;
+  --green: #b7ff47;
+  --text: #f8efff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(117, 61, 177, 0.45), transparent 35%),
+    radial-gradient(circle at bottom, rgba(13, 2, 24, 1), #050008 70%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mirror-stage {
+  max-width: 1500px;
+  width: 100%;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 16px;
+  position: relative;
+}
+
+.mirror-shell {
+  width: min(470px, 90vw);
+  aspect-ratio: 0.68;
+  border-radius: 50% 50% 44% 44%;
+  padding: 18px;
+  position: relative;
+  background:
+    linear-gradient(135deg, #ffe8a3, #8a571b 28%, #f6c54e 55%, #6b3e12 100%);
+  box-shadow:
+    0 0 35px rgba(215, 169, 63, 0.75),
+    0 0 95px rgba(141, 89, 255, 0.55),
+    inset 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+.outside-answer-panel {
+  margin-top: 26px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: min(760px, 92vw);
+  padding: 18px;
+  border: 1px solid rgba(255, 231, 160, 0.35);
+  border-radius: 24px;
+  background: rgba(15, 5, 28, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 30px rgba(137, 79, 255, 0.28),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.outside-answer-panel button {
+  min-width: 130px;
+}
+
+.title {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  margin: 0 0 24px;
+  letter-spacing: 1px;
+  width: auto;
+  text-align: center;
+  color: #ffe9a6;
+  text-shadow:
+    0 0 12px rgba(215, 169, 63, 0.7),
+    0 0 35px rgba(137, 79, 255, 0.7);
+}
+
+@keyframes auraPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.mirror-glass {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 43% 43%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(166, 255, 68, 0.18), transparent 22%),
+    radial-gradient(circle at 50% 58%, rgba(147, 82, 255, 0.32), transparent 38%),
+    linear-gradient(180deg, #583176 0%, #21112f 48%, #08020f 100%);
+  box-shadow:
+    inset 0 0 35px rgba(255, 255, 255, 0.18),
+    inset 0 0 90px rgba(0, 0, 0, 0.65);
+}
+
+.mist {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(181, 255, 83, 0.18), transparent 22%),
+    radial-gradient(circle at 70% 60%, rgba(186, 140, 255, 0.22), transparent 30%),
+    repeating-radial-gradient(circle, rgba(255,255,255,.045) 0 2px, transparent 2px 12px);
+  animation: mistMove 7s ease-in-out infinite alternate;
+}
+
+@keyframes mistMove {
+  from { transform: translate(-5%, -4%) rotate(0deg) scale(1); }
+  to { transform: translate(5%, 4%) rotate(8deg) scale(1.08); }
+}
+
+.mirror-content {
+  position: relative;
+  z-index: 3;
+  width: 82%;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.mirror-line {
+  font-size: 3rem;
+  color: #d9c7ff;
+  text-shadow: 0 0 10px rgba(186, 140, 255, 0.8);
+}
+
+.question-text,
+.guess-text {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  color: #fff5c7;
+  line-height: 1.3;
+  text-shadow: 0 0 12px rgba(255, 230, 150, 0.65);
+}
+
+.guess-text span {
+  color: var(--green);
+  text-shadow: 0 0 16px rgba(183, 255, 71, 0.8);
+}
+
+.primary-btn,
+.answer-grid button,
+.confirm-buttons button,
+.outside-answer-panel button,
+.history-toggle {
+  border: 1px solid rgba(255, 231, 160, 0.75);
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff2b8, #d7a93f, #8a571b);
+  color: #160716;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.primary-btn:hover,
+.answer-grid button:hover,
+.confirm-buttons button:hover,
+.outside-answer-panel button:hover,
+.history-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
+
+.history-section {
+  margin-top: 24px;
+  width: min(620px, 90vw);
+  text-align: center;
+}
+
+.history-log {
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 231, 160, 0.35);
+  border-radius: 18px;
+  background: rgba(15, 5, 28, 0.72);
+  backdrop-filter: blur(10px);
+  text-align: left;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.history-item {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 0;
+  color: #eadfff;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.outside-question-card {
+  margin-top: 22px;
+  width: min(820px, 92vw);
+  padding: 22px;
+  border: 1px solid rgba(255, 231, 160, 0.35);
+  border-radius: 28px;
+  background: rgba(15, 5, 28, 0.78);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow:
+    0 0 30px rgba(137, 79, 255, 0.28),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.outside-question-card .question-text {
+  margin: 0 0 18px;
+}
+
+.outside-answer-panel {
+  margin-top: 0;
+}
+
+.game-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+}
+
+.outside-question-card {
+  width: min(420px, 90vw);
+  padding: 28px;
+  border: 1px solid rgba(255, 231, 160, 0.45);
+  border-radius: 28px;
+  background: rgba(15, 5, 28, 0.82);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow:
+    0 0 35px rgba(137, 79, 255, 0.35),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.card-label {
+  color: #d9c7ff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.outside-answer-panel {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.outside-answer-panel button {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .game-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
