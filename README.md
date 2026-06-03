@@ -23,7 +23,7 @@ We designed:
 -Training, evaluation, and plotting scripts
 
 
-### Demo
+### Installation Instructions
 1. Clone the repository
 git clone https://github.com/yourusername/disney_villain_akinator.git
 cd disney_villain_akinator
@@ -32,7 +32,7 @@ cd disney_villain_akinator
 Then run:
 pip install -r requirements.txt
 
-### Installation Instructions
+### Demo
 The project would need 2 terminals to run at the same time, after doing the installation instructions.
 
 For the first terminal, which would be the one running the backend, would run the command line
