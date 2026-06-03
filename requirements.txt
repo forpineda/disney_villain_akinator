@@ -4,3 +4,6 @@ torch
 matplotlib
 seaborn
 gymnasium
+fastapi
+uvicorn
+pydantic
