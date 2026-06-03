@@ -1,9 +1,8 @@
-# env/villain_env.py
-
 import numpy as np
 import pandas as pd
 import random
 from typing import Tuple, Dict, Any, List
+#from env.questions import QUESTION_TEXT
 
 
 class VillainAkinatorEnv:
@@ -23,25 +22,29 @@ class VillainAkinatorEnv:
     # Columns we will try to use as binary attributes (0/1) from the CSV
     ATTRIBUTE_COLUMNS: List[str] = [
         "IsHuman",
-        "IsAnimal",
+        "FromPrincessMovie",
         "HasMagicPowers",
-        "TransformsToAnimal",
-        "TransformsToHuman",
+        "IsShapeShifter",
+        "HasVillainSong",
         "HasHorns",
         "WieldsWeapon",
         "HasMinions",
         "IsFemale",
         "DiesOrDestroyedAtEnd",
+        "IsCreatureOrSpirit",
+        "CastsCurseOrSpell",
+        "IsGroup",
+        "AppearsInSequel",
     ]
 
     def __init__(
         self,
         csv_path: str,
-        max_questions: int = 10,
+        max_questions: int = 15,
         use_main_villains_only: bool = True,
         name_column: str = "Name",
         random_seed: int = 42,
-        min_questions_before_guess: int = 0,
+        min_questions_before_guess: int = 10,
         use_reward_shaping: bool =True
     ):
         self.csv_path = csv_path
@@ -59,8 +62,11 @@ class VillainAkinatorEnv:
         if use_main_villains_only and "IsMainVillain" in df.columns:
             df = df[df["IsMainVillain"] == 1].reset_index(drop=True)
 
-        max_villains = 20
-        df = df.head(max_villains).reset_index(drop=True)
+        self.question_cost = 0.35          # was effectively 1.0 before
+        self.idk_extra_cost = 0.15
+        self.shaping_alpha = 1.25          # how much we reward informative questions
+
+        #self.action_dim = self.num_actions
 
         available_attr_cols = [c for c in self.ATTRIBUTE_COLUMNS if c in df.columns]
 
@@ -92,9 +98,12 @@ class VillainAkinatorEnv:
         self.num_questions_asked: int = 0
         self.done: bool = False
 
+        self.candidate_weights = np.ones(self.num_villains, dtype=np.float32)
+
+
     @property
     def state_dim(self) -> int:
-        return 2 * self.num_questions
+        return 2 * self.num_questions +2
 
     @property
     def action_dim(self) -> int:
@@ -116,6 +125,7 @@ class VillainAkinatorEnv:
         self.done = False
 
         self.candidate_mask = np.ones(self.num_villains, dtype=bool)
+        self.candidate_weights = np.ones(self.num_villains, dtype=np.float32)
 
         return self._build_state()
 
@@ -131,10 +141,9 @@ class VillainAkinatorEnv:
             question_index = action
 
             if self.asked[question_index] == 1:
-                # Asking the same question again → small penalty
-                reward = -1.0
-                # 👉 Still count it as a question so we eventually stop
-                self.num_questions_asked += 1
+                reward = -2.0
+                next_state = self._build_state()
+                return next_state, reward, self.done, {"error": "repeat_question"}
 
             else:
                 # Mark question as asked
@@ -155,21 +164,28 @@ class VillainAkinatorEnv:
 
                 # -------- Reward shaping: bonus if this question reduces candidates --------
                 if self.use_reward_shaping:
-                    prev_count = int(self.candidate_mask.sum())
+                    before = int(self.candidate_mask.sum())
 
                     if self.answers[question_index] == 1:
-                        consistent_with_answer = (self.attributes_matrix[:, question_index] == 1)
+                        consistent = (self.attributes_matrix[:, question_index] == 1)
                     else:
-                        consistent_with_answer = (self.attributes_matrix[:, question_index] == 0)
+                        consistent = (self.attributes_matrix[:, question_index] == 0)
 
-                    self.candidate_mask = self.candidate_mask & consistent_with_answer
-                    new_count = int(self.candidate_mask.sum())
+                    self.candidate_mask &= consistent
+                    after = int(self.candidate_mask.sum())
 
-                    if new_count < prev_count and prev_count > 0:
-                        reduction_fraction = (prev_count - new_count) / prev_count
-                        shaping_bonus = self.shaping_factor * reduction_fraction
+                    # normalized info gain shaping
+                    if before > 0:
+                        safe_after = max(after, 1)
+                        info_gain = np.log2(before / safe_after)
+                        max_gain = np.log2(max(self.num_villains, 2))
+                        norm_gain = info_gain / max_gain  # 0..1
+
+                        shaping_bonus = self.shaping_alpha * norm_gain
                         reward += shaping_bonus
                         info["shaping_bonus"] = shaping_bonus
+                        info["before"] = before
+                        info["after"] = after
                 # ---------------------------------------------------------------------------
 
             # Check if we hit max questions
@@ -220,9 +236,127 @@ class VillainAkinatorEnv:
             return next_state, reward, self.done, info
 
     def _build_state(self) -> np.ndarray:
-        # Convert to float32 for PyTorch convenience later
         asked_float = self.asked.astype(np.float32)
         answers_float = self.answers.astype(np.float32)
 
-        state = np.concatenate([asked_float, answers_float], axis=0)
+        # how many candidates are still possible?
+        remaining_frac = float(self.candidate_mask.sum()) / float(max(self.num_villains, 1))
+
+        # how many questions are left in this episode?
+        questions_left_frac = float(self.max_questions - self.num_questions_asked) / float(max(self.max_questions, 1))
+
+        extra = np.array([remaining_frac, questions_left_frac], dtype=np.float32)
+
+        state = np.concatenate([asked_float, answers_float, extra], axis=0)
         return state
+
+    def step_with_user_answer(self, q_idx: int, ans_code: str):
+        if self.done:
+            return self._build_state(), 0.0, True, {}
+
+        if q_idx < 0 or q_idx >= self.num_questions:
+            return self._build_state(), -5.0, self.done, {"error": "Invalid question index"}
+
+        if self.asked[q_idx] == 1:
+            return self._build_state(), -2.0, self.done, {"error": "Question already asked"}
+
+        # mark asked
+        self.asked[q_idx] = 1
+        self.num_questions_asked += 1
+
+        reward = -self.question_cost  # use your tuned cost (0.35)
+
+        before = float(self.candidate_weights.sum())
+        col = self.attributes_matrix[:, q_idx].astype(np.int32)  # 0/1
+
+        # Likelihoods
+        P = 0.75  # probability for "probably"
+        EPS = 1e-8
+
+        if ans_code == "idk":
+            self.answers[q_idx] = 0
+            reward -= self.idk_extra_cost
+
+        elif ans_code == "yes":
+            self.answers[q_idx] = 1
+            mult = np.where(col == 1, 0.95, 0.05).astype(np.float32)
+            self.candidate_weights *= mult
+
+        elif ans_code == "no":
+            self.answers[q_idx] = -1
+            mult = np.where(col == 0, 0.95, 0.05).astype(np.float32)
+            self.candidate_weights *= mult
+
+        elif ans_code == "prob_yes":
+            self.answers[q_idx] = 1
+            mult = np.where(col == 1, 0.75, 0.25).astype(np.float32)
+            self.candidate_weights *= mult
+
+        elif ans_code == "prob_no":
+            self.answers[q_idx] = -1
+            mult = np.where(col == 0, 0.75, 0.25).astype(np.float32)
+            self.candidate_weights *= mult
+
+        else:
+            # unknown answer type -> treat as idk
+            self.answers[q_idx] = 0
+            reward -= self.idk_extra_cost
+
+        # keep mask in sync (optional but useful)
+        max_w = float(self.candidate_weights.max())
+        self.candidate_mask = self.candidate_weights >= max_w * 0.25
+
+        after = float(self.candidate_weights.sum())
+        remaining = int(self.candidate_mask.sum())
+
+        total = float(self.candidate_weights.sum())
+        if total > EPS:
+            self.candidate_weights /= total
+
+        # reward shaping: reward proportional reduction in uncertainty
+        if self.use_reward_shaping and before > 0:
+            # use weight-sum reduction instead of count reduction
+            reduction = (before - after) / max(before, EPS)
+            reward += self.shaping_alpha * reduction
+
+        if self.num_questions_asked >= self.max_questions:
+            self.done = True
+
+        info = {"remaining_candidates": remaining, "before_w": before, "after_w": after}
+        return self._build_state(), float(reward), self.done, info
+
+
+    def reset_user(self) -> np.ndarray:
+        self.secret_villain_index = -1
+
+        self.asked = np.zeros(self.num_questions, dtype=np.int32)
+        self.answers = np.zeros(self.num_questions, dtype=np.float32)
+
+        self.num_questions_asked = 0
+        self.done = False
+
+        self.candidate_mask = np.ones(self.num_villains, dtype=bool)
+        self.candidate_weights = np.ones(self.num_villains, dtype=np.float32)
+        self.candidate_weights /= self.candidate_weights.sum()
+
+        return self._build_state()
+
+    def valid_action_mask(self) -> np.ndarray:
+        """
+        Returns a boolean mask of shape (num_actions,)
+        True = action is allowed, False = action is invalid.
+        Actions:
+        0..num_questions-1 => ask question q
+        num_questions..num_questions+num_villains-1 => guess villain
+        """
+        mask = np.ones(self.num_actions, dtype=bool)
+
+        # Can't ask a question twice
+        mask[: self.num_questions] = (self.asked == 0)
+
+        # Can't guess before min questions
+        if self.num_questions_asked < self.min_questions_before_guess:
+            mask[self.num_questions :] = False
+
+        return mask
+
