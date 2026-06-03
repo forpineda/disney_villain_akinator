@@ -23,7 +23,7 @@ We designed:
 -Training, evaluation, and plotting scripts
 
 
-### Installation Instructions
+### Demo
 1. Clone the repository
 git clone https://github.com/yourusername/disney_villain_akinator.git
 cd disney_villain_akinator
